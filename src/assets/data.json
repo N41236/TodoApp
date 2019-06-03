@@ -1,0 +1,3 @@
+{
+    "todoItems": ["learn angular", "watch tutorials", "setup env", "looooooooooooooooooooooooooooooooong text", "The goal is to have a long piece of text truncated by CSS ellipsis show up in a tooltip only by hovering on Any suggestions that dont involve JS instead of a pseudo-element and Im wrapping everything in an extra div"]
+}

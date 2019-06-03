@@ -1,0 +1,10 @@
+<div mat-padding fxLayout="column" fxLayoutAlign="start start">
+  <div fxFlex>
+    <mat-form-field>
+      <input matInput type="text" placeholder="New Todo Item" name="item" #ref>
+    </mat-form-field>
+  </div>
+  <div fxFlex>
+    <button mat-raised-button color="primary" (click)="addItem(ref.value); ref.value = ''" matTooltip="Add to list">Add</button>
+  </div>
+</div>

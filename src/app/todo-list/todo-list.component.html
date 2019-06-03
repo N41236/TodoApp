@@ -1,0 +1,12 @@
+<div fxLayout="row" fxLayoutAlign="space-evenly start">
+  <div fxFlex="70">
+    <mat-selection-list #checklist> 
+      <mat-list-option class="no-wrap" checkboxPosition="before" [value]="i" *ngFor='let item of items; let i = index;' [matTooltip]="item">
+        {{ item }}
+      </mat-list-option>
+    </mat-selection-list>
+  </div>
+  <div fxFlex="30">
+    <button mat-raised-button color="primary" matTooltip="Delete checked" (click)="deleteItems(checklist.selectedOptions.selected)"><mat-icon>delete</mat-icon></button>
+  </div>
+</div>
