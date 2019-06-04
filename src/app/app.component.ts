@@ -19,22 +19,22 @@ export class AppComponent implements OnInit {
   constructor(private service: TodoDataService) { }
 
   ngOnInit() {
-    // this.service.getTodoItems().subscribe(
-    //   (data: TodoData) => {
-    //     this.listItems = data.todoItems;
-    //   },
-    //   (error: HttpErrorResponse)  => {
-    //     console.log(error)
-    //   }
-    // )
-    this.listItems$ = ajax("assets/data.json")
-    this.listItems$.subscribe(
-      ajaxResponse => {
-        this.listItems = ajaxResponse.response.todoItems;
+    this.service.getTodoItems().subscribe(
+      (data: TodoData) => {
+        this.listItems = data.todoItems;
       },
-      err => console.log(err),
-      () => console.log('Completed!')
+      (error: HttpErrorResponse)  => {
+        console.log(error)
+      }
     )
+    // this.listItems$ = ajax("assets/data.json")
+    // this.listItems$.subscribe(
+    //   ajaxResponse => {
+    //     this.listItems = ajaxResponse.response.todoItems;
+    //   },
+    //   err => console.log(err),
+    //   () => console.log('Completed!')
+    // )
   }
 
   handleRemove($event: number[]) {
