@@ -28,7 +28,7 @@ describe('TodoDataService', () => {
   it('should be called once', () => {
 
     service.getTodoItems().subscribe();
-    
+
     const req = httpTestingController.expectOne('assets/data.json');
     req.flush({ todoItems: ['learn angular', 'write tests'] });
     httpTestingController.verify();

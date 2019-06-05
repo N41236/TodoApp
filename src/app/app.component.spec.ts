@@ -15,7 +15,7 @@ import { By } from '@angular/platform-browser';
 class MockTodoListComponent {
 
   @Input()
-  items: string[]
+  items: string[];
 
   constructor() { }
 }
@@ -58,8 +58,8 @@ describe('AppComponent', () => {
     fixture = TestBed.createComponent(AppComponent);
   }));
 
-  it('should create the app', () => {  
-    component = fixture.debugElement.componentInstance;    
+  it('should create the app', () => {
+    component = fixture.debugElement.componentInstance;
     expect(component).toBeTruthy();
   });
 
@@ -67,7 +67,7 @@ describe('AppComponent', () => {
     mockTodoDataService.getTodoItems.and.returnValue(of({todoItems: ['learn rxjs', 'play tennis']}));
 
     fixture.detectChanges();
-    
+
     expect(fixture.componentInstance.listItems.length).toBe(2);
   });
 
@@ -82,7 +82,7 @@ describe('AppComponent', () => {
   beforeEach(() => {
     mockTodoService = jasmine.createSpyObj(['getTodoItems']);
     component = new AppComponent(mockTodoService);
-  })
+  });
 
   describe('on initialization', () => {
 
@@ -90,14 +90,14 @@ describe('AppComponent', () => {
       mockTodoService.getTodoItems.and.returnValue(of({todoItems: ['learn rxjs', 'play tennis']}));
 
       component.ngOnInit();
-      
+
       expect(component.listItems.length).toBe(2);
       expect(component.listItems[0]).toEqual('learn rxjs');
       expect(component.listItems[1]).toEqual('play tennis');
-    })
-  
-  })
-  
+    });
+
+  });
+
 });
 
 // Deep Tests
@@ -130,8 +130,8 @@ describe('AppComponent', () => {
     fixture = TestBed.createComponent(AppComponent);
   }));
 
-  it('should create the app', () => {  
-    component = fixture.debugElement.componentInstance;    
+  it('should create the app', () => {
+    component = fixture.debugElement.componentInstance;
     expect(component).toBeTruthy();
   });
 
@@ -139,7 +139,7 @@ describe('AppComponent', () => {
     mockTodoDataService.getTodoItems.and.returnValue(of({todoItems: ['learn rxjs', 'play tennis']}));
 
     fixture.detectChanges();
-    
+
     const todoListComp = fixture.debugElement.query(By.directive(TodoListComponent));
     expect(todoListComp).toBeTruthy();
     expect(todoListComp.componentInstance.items.length).toBe(2);
