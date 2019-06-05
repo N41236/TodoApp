@@ -1,3 +1,3 @@
 export interface TodoData {
-    todoItems: string[]
+    todoItems: string[];
 }

@@ -9,7 +9,7 @@ import { MatListOption } from '@angular/material';
 export class TodoListComponent implements OnInit {
 
   @Input()
-  items: string[]
+  items: string[];
 
   @Output()
   remove: EventEmitter<number[]> = new EventEmitter<number[]>();

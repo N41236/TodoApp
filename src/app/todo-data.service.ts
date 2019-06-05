@@ -5,11 +5,11 @@ import { TodoData } from './todo-data';
 @Injectable({
   providedIn: 'root'
 })
-export class TodoDataService { 
+export class TodoDataService {
 
   constructor(private httpClient: HttpClient) { }
 
   getTodoItems() {
-    return this.httpClient.get<TodoData>("assets/data.json");
+    return this.httpClient.get<TodoData>('assets/data.json');
   }
 }

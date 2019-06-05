@@ -24,9 +24,9 @@ export class AppComponent implements OnInit {
         this.listItems = data.todoItems;
       },
       (error: HttpErrorResponse)  => {
-        console.log(error)
+        console.log(error);
       }
-    )
+    );
     // this.listItems$ = ajax("assets/data.json")
     // this.listItems$.subscribe(
     //   ajaxResponse => {
@@ -40,11 +40,11 @@ export class AppComponent implements OnInit {
   handleRemove($event: number[]) {
     this.listItems = this.listItems.filter((listItem: string, index: number) => {
       return $event.indexOf(index) === -1;
-    })
+    });
   }
 
   handleAdd($event: string) {
-    this.listItems.push($event)
+    this.listItems.push($event);
   }
 
 }

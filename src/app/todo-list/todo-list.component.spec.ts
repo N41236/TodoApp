@@ -30,16 +30,16 @@ describe('TodoListComponent', () => {
     component.items = ['learn angular', 'write tests'];
 
     fixture.detectChanges();
-    
+
     // With debug
     expect(fixture.debugElement.queryAll(By.css('mat-list-option')).length).toEqual(2);
 
     // With native
-    let matListOptionElement = fixture.nativeElement.querySelectorAll("mat-list-option");
+    const matListOptionElement = fixture.nativeElement.querySelectorAll('mat-list-option');
     expect(matListOptionElement.length).toEqual(2);
     matListOptionElement.forEach((element, index) => {
       expect(element.textContent).toContain(component.items[index]);
     });
 
-  })
+  });
 });
