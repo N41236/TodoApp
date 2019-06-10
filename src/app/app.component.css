@@ -1,0 +1,21 @@
+:host::ng-deep .mat-list-item-content {
+  max-width: 100%;
+  padding: 8px 16px !important;
+}
+
+/* :host::ng-deep .mat-list-text {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block !important;
+} */
+
+:host::ng-deep .mat-list-text {
+  word-break: break-word;
+}
+
+:host::ng-deep .mat-list-base .mat-list-item {
+  height: auto;
+  margin: 8px;
+  width: auto;
+}
+

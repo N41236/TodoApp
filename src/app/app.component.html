@@ -10,11 +10,37 @@
           </div>
         </div>
       </div>
-      <div fxFlex>
+      <div class="todo-new-item" fxFlex>
         <div fxLayout="row" fxLayoutAlign="center stretch">
           <div fxFlex></div>
-          <app-todo-new-item (add)="handleAdd($event)" fxFlex></app-todo-new-item>
-          <app-todo-list [items]='listItems' (remove)='handleRemove($event)' fxFlex></app-todo-list>
+          <div fxFlex>
+            <div mat-padding fxLayout="column" fxLayoutAlign="start start">
+              <div fxFlex>
+                <mat-form-field>
+                  <input matInput type="text" placeholder="New Todo Item" name="item" #ref>
+                </mat-form-field>
+              </div>
+              <div fxFlex>
+                <button mat-raised-button color="primary" (click)="handleAdd(ref.value); ref.value = ''" matTooltip="Add to list">Add</button>
+              </div>
+            </div>
+          </div>
+          <div class="todo-list" fxFlex>
+            <div fxLayout="row" fxLayoutAlign="space-evenly start">
+              <div fxFlex="70">
+                <mat-selection-list #checklist>
+                  <mat-list-option class="no-wrap" checkboxPosition="before" [value]="i" *ngFor='let item of listItems; let i = index;' [matTooltip]="item">
+                    {{ item }}
+                  </mat-list-option>
+                </mat-selection-list>
+              </div>
+              <div fxFlex="30">
+                <button mat-raised-button color="primary" matTooltip="Delete checked" (click)="handleRemove(checklist.selectedOptions.selected)"><mat-icon>delete</mat-icon></button>
+              </div>
+            </div>
+          </div>
+          <!-- <app-todo-new-item (add)="handleAdd($event)" fxFlex></app-todo-new-item> -->
+          <!-- <app-todo-list [items]='listItems' (remove)='handleRemove($event)' fxFlex></app-todo-list> -->
           <!-- <div fxFlex> {{ listItems$ | json | asnyc }} </div> -->
           <div fxFlex></div>
         </div>

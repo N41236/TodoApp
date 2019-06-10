@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TodoDataService } from './todo-data.service';
 import { TodoData } from './todo-data';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { ajax, AjaxResponse } from 'rxjs/ajax';
+import { MatListOption } from '@angular/material';
 
 @Component({
   selector: 'app-root',
@@ -14,12 +13,11 @@ import { ajax, AjaxResponse } from 'rxjs/ajax';
 export class AppComponent implements OnInit {
 
   public listItems: string[];
-  public listItems$: Observable<AjaxResponse>;
 
-  constructor(private service: TodoDataService) { }
+  constructor(private _service: TodoDataService) { }
 
   ngOnInit() {
-    this.service.getTodoItems().subscribe(
+    this._service.getTodoItems().subscribe(
       (data: TodoData) => {
         this.listItems = data.todoItems;
       },
@@ -27,24 +25,22 @@ export class AppComponent implements OnInit {
         console.log(error);
       }
     );
-    // this.listItems$ = ajax("assets/data.json")
-    // this.listItems$.subscribe(
-    //   ajaxResponse => {
-    //     this.listItems = ajaxResponse.response.todoItems;
-    //   },
-    //   err => console.log(err),
-    //   () => console.log('Completed!')
-    // )
   }
 
-  handleRemove($event: number[]) {
-    this.listItems = this.listItems.filter((listItem: string, index: number) => {
-      return $event.indexOf(index) === -1;
-    });
+  handleRemove(options: MatListOption[]) {
+    const selected: number[] = options.map(option => option.value);
+    this._service.removeTodoItem(selected).subscribe(
+      data => this.listItems = data.todoItems,
+      err => console.log(err)
+    );
   }
 
-  handleAdd($event: string) {
-    this.listItems.push($event);
+  handleAdd(inputVal: string) {
+    this._service.addTodoItem(inputVal).subscribe(
+      data => this.listItems = data.todoItems,
+      err => console.log(err)
+    );
   }
 
 }
+
